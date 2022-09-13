@@ -1,4 +1,5 @@
 # 4. Median of Two Sorted Arrays
+# it's possible to use bisect to speed up solution
 from typing import List
 
 
