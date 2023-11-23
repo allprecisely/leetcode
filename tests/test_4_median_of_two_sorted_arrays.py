@@ -1,6 +1,6 @@
 import pytest
 
-from solutions.findMedianSortedArrays_4 import Solution
+from solutions.problem_4_median_of_two_sorted_arrays import Solution
 
 instance = Solution()
 

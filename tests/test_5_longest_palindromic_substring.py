@@ -1,6 +1,6 @@
 import pytest
 
-from solutions.longestPalindrome_5 import Solution
+from solutions.problem_5_longest_palindromic_substring import Solution
 
 instance = Solution()
 

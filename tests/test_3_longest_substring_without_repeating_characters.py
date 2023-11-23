@@ -1,6 +1,6 @@
 import pytest
 
-from solutions.lengthOfLongestSubstring_3 import Solution
+from solutions.problem_3_longest_substring_without_repeating_characters import Solution
 
 instance = Solution()
 
