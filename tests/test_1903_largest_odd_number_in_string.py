@@ -11,7 +11,7 @@ instance = Solution()
         (dict(num = "52"), "5"),
         (dict(num = "4206"), ""),
         (dict(num = "35427"), "35427"),
-        #dict(num =  my check)s
+        # my checks
         (dict(num = "1"), "1"),
         (dict(num = "2"), ""),
         (dict(num = "258"), "25"),
