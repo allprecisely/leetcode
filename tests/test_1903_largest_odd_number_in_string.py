@@ -8,15 +8,15 @@ instance = Solution()
 @pytest.mark.parametrize(
     'input, output',
     [
-        ("52", "5"),
-        ("4206", ""),
-        ("35427", "35427"),
-        # my checks
-        ("1", "1"),
-        ("2", ""),
-        ("258", "25"),
-        ("123278958", "12327895"),
+        (dict(num = "52"), "5"),
+        (dict(num = "4206"), ""),
+        (dict(num = "35427"), "35427"),
+        #dict(num =  my check)s
+        (dict(num = "1"), "1"),
+        (dict(num = "2"), ""),
+        (dict(num = "258"), "25"),
+        (dict(num = "123278958"), "12327895"),
     ],
 )
 def test_solution(input, output):
-    assert output == instance.largestOddNumber(input)
+    assert output == instance.largestOddNumber(**input)

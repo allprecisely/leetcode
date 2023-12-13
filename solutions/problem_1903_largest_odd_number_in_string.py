@@ -1,5 +1,4 @@
 # https://leetcode.com/problems/largest-odd-number-in-string/description/
-# 1 try
 
 class Solution:
     def largestOddNumber(self, num: str) -> str:
