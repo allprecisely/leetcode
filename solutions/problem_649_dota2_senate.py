@@ -1,26 +1,25 @@
 # https://leetcode.com/problems/dota2-senate/
 
+from collections import deque
+
+
 class Solution:
     def predictPartyVictory(self, senate: str) -> str:
-        r = d = 0
-        r_present = d_present = True
-        while r_present and d_present:
-            r_present = d_present = False
-            new_round_senate = []
-            for c in senate:
-                if c == 'R':
-                    if d == 0:
-                        r_present = True
-                        new_round_senate.append(c)
-                        r += 1
-                    else:
-                        d -= 1
-                elif r == 0:
-                    d_present = True
-                    new_round_senate.append(c)
-                    d += 1
-                else:
-                    r -= 1
-            print(new_round_senate, r,d)
-            senate = new_round_senate
-        return "Radiant" if r_present else "Dire"
+        r, d = deque(), deque()
+        senate_len = len(senate)
+        for i, c in enumerate(senate):
+            if c == 'R':
+                r.append(i)
+            else:
+                d.append(i)
+        
+        while r and d:
+            senate_len += 1
+            if r[0] < d[0]:
+                r.append(senate_len)
+            else:
+                d.append(senate_len)
+            r.popleft()
+            d.popleft()
+
+        return "Radiant" if r else "Dire"
