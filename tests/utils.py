@@ -30,13 +30,14 @@ def tree_to_list(root: TreeNode) -> List[int]:
 def list_to_tree(vals: List[int]) -> Optional[TreeNode]:
     if not vals:
         return None
-    nodes = [TreeNode(val) for val in vals]
+    nodes = [TreeNode(val) if val else None for val in vals]
     for i in range(1, len(vals)):
         parent_index = (i - 1) // 2
-        if i % 2:
-            nodes[parent_index].left = nodes[i]
-        else:
-            nodes[parent_index].right = nodes[i]
+        if nodes[parent_index]:
+            if i % 2:
+                nodes[parent_index].left = nodes[i]
+            else:
+                nodes[parent_index].right = nodes[i]
     return nodes[0]
 
 """
