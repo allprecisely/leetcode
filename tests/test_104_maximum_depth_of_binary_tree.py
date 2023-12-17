@@ -14,7 +14,7 @@ instance = Solution()
         # my checks
         ([], 0),
         ([1], 1),
-        ([1,1,None,1,None,None,None,1], 4),
+        ([1,1,None,1,None,1], 4),
     ],
 )
 def test_solution(input_data, output):

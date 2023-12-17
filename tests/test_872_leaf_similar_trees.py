@@ -15,7 +15,7 @@ instance = Solution()
         (([1], [1]), True),
         (([1], [2]), False),
         (([1, 2, 3], [1, 2, 3]), True),
-        (([1, 2, None, 3], [3, None, 1, None, None, 3]), True),
+        (([1, 2, None, 3], [3, None, 1, 3]), True),
         # after wrong
         (
             (

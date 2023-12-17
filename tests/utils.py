@@ -1,3 +1,4 @@
+from collections import deque
 from typing import Dict, List, Optional
 
 
@@ -10,35 +11,41 @@ class TreeNode:
 
 # full tree
 def tree_to_list(root: TreeNode) -> List[int]:
-    def helper(node: TreeNode, level: int = 0) -> Dict[int, List[int]]:
-        if not node:
-            return {}
-        left_levels = helper(node.left, level + 1)
-        right_levels = helper(node.right, level + 1)
-        for k, v in right_levels.items():
-            left_levels[k] += v
-        return {**left_levels, level: [node.val]}
-    
-    result = []
-    levels = helper(root)
-    for i in range(len(levels)):
-        result += levels[i]
-    return result
+    tree_list = []
+    queue = deque([root]) if root else None
+    while queue:
+        node = queue.popleft()
+        if node:
+            queue.append(node.left)
+            queue.append(node.right)
+        tree_list.append(node.val if node else None)
+        
+    while tree_list and tree_list[-1] == None:
+        tree_list.pop()
+    return tree_list
 
 
 # full tree
 def list_to_tree(vals: List[int]) -> Optional[TreeNode]:
     if not vals:
         return None
-    nodes = [TreeNode(val) if val else None for val in vals]
-    for i in range(1, len(vals)):
-        parent_index = (i - 1) // 2
-        if nodes[parent_index]:
-            if i % 2:
-                nodes[parent_index].left = nodes[i]
-            else:
-                nodes[parent_index].right = nodes[i]
-    return nodes[0]
+    
+    head = TreeNode(vals[0])
+    nodes = deque([head])
+
+    left = True
+    for val in vals[1:]:
+        node = TreeNode(val) if val else None
+        if left:
+            nodes[0].left = node
+            left = False
+        else:
+            nodes.popleft().right = node
+            left = True
+        if node:
+            nodes.append(node)
+
+    return head
 
 """
          0
