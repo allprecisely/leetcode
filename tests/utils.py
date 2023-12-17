@@ -1,5 +1,5 @@
 from collections import deque
-from typing import Dict, List, Optional
+from typing import List, Optional
 
 
 class TreeNode:
@@ -9,7 +9,6 @@ class TreeNode:
         self.right = right
 
 
-# full tree
 def tree_to_list(root: TreeNode) -> List[int]:
     tree_list = []
     queue = deque([root]) if root else None
@@ -25,7 +24,6 @@ def tree_to_list(root: TreeNode) -> List[int]:
     return tree_list
 
 
-# full tree
 def list_to_tree(vals: List[int]) -> Optional[TreeNode]:
     if not vals:
         return None
@@ -35,7 +33,7 @@ def list_to_tree(vals: List[int]) -> Optional[TreeNode]:
 
     left = True
     for val in vals[1:]:
-        node = TreeNode(val) if val else None
+        node = TreeNode(val) if val != None else None
         if left:
             nodes[0].left = node
             left = False
@@ -47,9 +45,9 @@ def list_to_tree(vals: List[int]) -> Optional[TreeNode]:
 
     return head
 
-"""
-         0
-    1           2
-  3   4      5     6
- 7 8 9 10  11 12 13 14
-"""
+
+def find_node(root: Optional[TreeNode], val: int) -> TreeNode:
+    if root != None:
+        if root.val == val:
+            return root
+        return find_node(root.left, val) or find_node(root.right, val)
