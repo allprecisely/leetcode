@@ -21,3 +21,4 @@ instance = Solution()
 def test_solution(input_data, output):
     input_data['root'] = list_to_tree(input_data['root'])
     assert output == instance.rightSideView(**input_data)
+    assert output == instance.rightSideViewRecursive(**input_data)

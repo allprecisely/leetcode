@@ -1,6 +1,5 @@
 # https://leetcode.com/problems/binary-tree-right-side-view/
 
-from collections import deque
 from typing import List, Optional
 
 
@@ -13,19 +12,27 @@ class TreeNode:
 
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        queue = deque([root]) if root else None
+        if root == None:
+            return []
+        
         right_side = []
-        level_size, next_level_size = 1, 0
-        while queue:
-            node = queue.popleft()
-            level_size -= 1
-            if node.left:
-                queue.append(node.left)
-                next_level_size += 1
-            if node.right:
-                queue.append(node.right)
-                next_level_size += 1
-            if level_size == 0:
-                right_side.append(node.val)
-                level_size, next_level_size = next_level_size, 0
+        level = [root]
+        while level:
+            right_side.append(level[0].val)
+            new_level = []
+            for node in level:
+                if node.right:
+                    new_level.append(node.right)
+                if node.left:
+                    new_level.append(node.left)
+            level = new_level
         return right_side
+
+
+    def rightSideViewRecursive(self, root: Optional[TreeNode]) -> List[int]:
+        if root == None:
+            return []
+        right = self.rightSideViewRecursive(root.right)
+        left = self.rightSideViewRecursive(root.left)
+        return [root.val] + right + left[len(right):]
+    
