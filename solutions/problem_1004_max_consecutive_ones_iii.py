@@ -10,7 +10,6 @@ class Solution:
             if num == 0:
                 k -= 1
             if k < 0:
-                print(num, k, left)
                 if nums[left] == 0:
                     k += 1
                 left += 1

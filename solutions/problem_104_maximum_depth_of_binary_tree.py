@@ -31,7 +31,6 @@ class Solution:
             if node.right:
                 queue.append(node.right)
             queue_length -= 1
-            print(queue, node, queue_length)
             if queue_length == 0:
                 levels += 1
                 queue_length = len(queue)

@@ -27,6 +27,5 @@ class Solution:
         
         result += self.dfs(root.left, target_sum, current_sum, target_sums)
         result += self.dfs(root.right, target_sum, current_sum, target_sums)
-        print(current_sum, result)
         target_sums[current_sum_with_target] -= 1
         return result

@@ -22,5 +22,4 @@ def test_solution(input_data, output):
     input_data['root'] = list_to_tree(input_data['root'])
     input_data['p'] = find_node(input_data['root'], input_data['p'])
     input_data['q'] = find_node(input_data['root'], input_data['q'])
-    print(input_data, input_data['root'].val, input_data['p'].val, input_data['q'].val)
     assert output == instance.lowestCommonAncestor(**input_data).val
