@@ -7,6 +7,11 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+    
+    def __repr__(self):
+        left = self.left.val if self.left else None
+        right = self.right.val if self.right else None
+        return f'\'Node ({self.val}): left={left}, right={right}\''
 
 
 def tree_to_list(root: TreeNode) -> List[int]:
