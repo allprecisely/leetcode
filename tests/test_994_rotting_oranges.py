@@ -28,5 +28,3 @@ instance = Solution()
 )
 def test_solution(input_data, output):
     assert output == instance.orangesRotting(**input_data)
-
-test_solution(dict(grid = [[2, 2]]), 0),
