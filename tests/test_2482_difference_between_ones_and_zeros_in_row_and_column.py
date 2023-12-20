@@ -6,7 +6,7 @@ instance = Solution()
 
 
 @pytest.mark.parametrize(
-    'input, output',
+    'input_data, output',
     [
         (dict(grid = [[0,1,1],[1,0,1],[0,0,1]]), [[0,0,4],[0,0,4],[-2,-2,2]]),
         (dict(grid = [[1,1,1],[1,1,1]]), [[5,5,5],[5,5,5]]),
@@ -19,5 +19,5 @@ instance = Solution()
         (dict(grid = [[1, 1]]), [[3, 3]]),
     ],
 )
-def test_solution(input, output):
-    assert output == instance.onesMinusZeros(**input)
+def test_solution(input_data, output):
+    assert output == instance.onesMinusZeros(**input_data)
